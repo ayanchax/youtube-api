@@ -15,7 +15,7 @@ this.setState({selectedVideo: video})
             params: {
                 part: 'snippet',
                 maxResults: 5,
-                key: 'AIzaSyDBbmj5oBaSj5YNEE-WZ6obZxj1O6r5qxQ',
+                key: 'api-key',
                 q: searchTerm,
             }
         })
