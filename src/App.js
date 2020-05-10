@@ -6,16 +6,16 @@ class App extends React.Component {
     state = {
         videos: [],
         selectedVideo: null,
-    }
+    } 
     onVideoSelect = (video) => {
-this.setState({selectedVideo: video})
+        this.setState({ selectedVideo: video })
     }
-    handleSubmit = async (searchTerm) => {
+    handleSubmit = async(searchTerm) => {
         const response = await youtube.get('search', {
             params: {
                 part: 'snippet',
                 maxResults: 5,
-                key: 'api-key',
+                key: 'AIzaSyDBbmj5oBaSj5YNEE-WZ6obZxj1O6r5qxQ',
                 q: searchTerm,
             }
         })
@@ -27,24 +27,21 @@ this.setState({selectedVideo: video})
     }
     render() {
         const { selectedVideo, videos } = this.state;
-        return (
-            <Grid justify='center' container spacing={10}>
-                <Grid item xs={11}>
-                    <Grid container spacing={10}>
-                        <Grid item xs={12}>
-                            <SearchBar onFormSubmit={this.handleSubmit} />
-                        </Grid>
-                        <Grid style={{ marginTop: '-45px', height: '700px' }} item xs={8}>
-                            <VideoDetail video={selectedVideo} />
-                        </Grid>
-
-                        <Grid style={{ marginTop: '-35px', maxHeight: '620px', overflowY: 'auto' }} item xs={4}>
-                            <VideoList onVideoSelect={this.onVideoSelect} videos={videos} />
-                        </Grid>
-                    </Grid>
-
-                </Grid>
-
+        return ( 
+          <Grid justify = 'center' container spacing = { 10 } >
+            <Grid item xs = { 11 } >
+            <Grid container spacing = { 10 } >
+            <Grid item xs = { 12 } >
+            <SearchBar onFormSubmit = { this.handleSubmit }/>
+            </Grid> <Grid style = {{ marginTop: '-45px', height: '700px' } }item xs = { 8 } >
+            <VideoDetail video = { selectedVideo }/>
+            </Grid>
+            <Grid style = {{ marginTop: '-35px', maxHeight: '620px', overflowY: 'auto' } }
+            item xs = { 4 } >
+            <VideoList onVideoSelect = { this.onVideoSelect }videos = { videos }/>
+            </Grid> 
+            </Grid>
+            </Grid>
             </Grid>
         );
     }
